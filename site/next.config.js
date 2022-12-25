@@ -14,6 +14,14 @@ module.exports = withCommerceConfig({
     locales: ['en-US', 'es'],
     defaultLocale: 'en-US',
   },
+  images: {       remotePatterns: [
+    {
+      // The `src` property hostname must end with `.example.com`,
+      // otherwise this will respond with 400 Bad Request.
+      protocol: 'https',
+      hostname: 'cdn.tezecom.com',
+    },
+  ], },
   rewrites() {
     return [
       (isBC || isShopify || isSwell || isVendure || isSaleor) && {
@@ -39,6 +47,7 @@ module.exports = withCommerceConfig({
   // Avoid Module not found: ESM packages (supports-color) need to be imported. Use 'import' to reference the package instead. https://nextjs.org/docs/messages/import-esm-externals
   experimental: {
     esmExternals: 'loose',
+    // runtime: 'experimental-edge',
   },
 })
 
